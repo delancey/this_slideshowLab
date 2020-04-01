@@ -19,12 +19,12 @@ var slideshow = {
 		//moves currentphotoindex to the next photo if there is one
 		//logs current photo name or end of slideshow
 
-		if (this.currentPhotoIndex < this.photolist.length-1)
+		if (this.currentPhotoIndex < this.photolist.length)
 		{			
-			this.currentPhotoIndex++;
 			console.log(this.photolist[this.currentPhotoIndex]);
+			this.currentPhotoIndex++;		
 		} else 
-			return console.log("end of slideshow");
+			this.pause();
 		
 	},
 
@@ -40,71 +40,38 @@ var slideshow = {
 	getCurrentPhoto: function(){ //5
 		//returns current photo from list
 		console.log(this.photolist[this.currentPhotoIndex]);
+	},
+	playInterval: null,
+
+	play: function()
+		{
+		this.playInterval = setInterval(function() {slideshow.nextphoto()},2000)
+		},
+
+		
+	pause: function()
+	{
+		clearInterval(this.playInterval);
+		console.log("paused")
 	}
 
-
+	
 
 } //slideshow end
 
 
-slideshow.getCurrentPhoto();
-slideshow.nextphoto();
-slideshow.nextphoto();
-slideshow.nextphoto();
-slideshow.nextphoto();
-slideshow.nextphoto();
-slideshow.nextphoto();
+
+
+// slideshow.getCurrentPhoto();
+slideshow.play();
 
 
 
+
+/* slideshow.prevPhoto();
 slideshow.prevPhoto();
 slideshow.prevPhoto();
 slideshow.prevPhoto();
 slideshow.prevPhoto();
 slideshow.prevPhoto();
-slideshow.prevPhoto();
-
-
-
-
-
-
-
-
-/*var slideshow = {
-	photolist: ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg', 'photo5.jpg'],
-	currentPhotoIndex: 0,
-
-	nextPhoto: function(){
-		
-		currentphotoIndex = currentPhotoIndex++;
-		console.log(this.currentPhotoIndex);
-
-
-	prevPhoto: function(){
-		for (i = photoList.length-1; i >= 0; i--) {
-			if (i === 0) {
-			console.log("Beginning of slideshow  Photo1.jpg");
-    		break;
-  			} else {
-  			console.log(photoList[i]);
-
-  			} 	
-		}		
-	},
-	getCurrentPhoto: function(){
-		slideshow.photoList[i];
-	}*/
-
-
-	/*for (i = 0; i < photoList.length; i++) {
-			if (i === photoList.length) {
-			console.log("End of slideshow ");
-    		// break;
-  			} else {
-  			console.log(photoList[i]);
-
-  			} 	
-		}		
-	},*/
-
+ */
